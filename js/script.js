@@ -4,28 +4,38 @@ const qr = document.getElementById('qrcode')
 const onGenerateSubmit = (e) => {
   e.preventDefault()
 
-  clearUI();
+  clearUI()
 
   const url = document.getElementById('url').value
   const size = document.getElementById('size').value
 
   if (url === '') {
-    alert('Please enter a URL')
+    Toastify({
+      text: 'Please enter a URL',
+      duration: 1500,
+      newWindow: true,
+      close: true,
+      gravity: 'bottom',
+      position: 'center',
+      stopOnFocus: true,
+      style: {
+        background: 'linear-gradient(135deg, rgb(99 102 241), rgb(49 46 129))',
+      },
+    }).showToast()
   } else {
     showSpinner()
 
     setTimeout(() => {
-      hideSpinner();
+      hideSpinner()
 
-      generateQRCode(url, size);
+      generateQRCode(url, size)
 
       setTimeout(() => {
-        const saveUrl = qr.querySelector('img').src;
+        const saveUrl = qr.querySelector('img').src
 
-        createSaveBtn(saveUrl);
-      }, 50);
-    }, 1000);
-
+        createSaveBtn(saveUrl)
+      }, 50)
+    }, 1000)
   }
 }
 
@@ -46,21 +56,21 @@ const hideSpinner = () => {
 }
 
 const clearUI = () => {
-  qr.innerHTML = '';
-  
-  const saveLink = document.getElementById('save-link');
-  if(saveLink) saveLink.remove();
+  qr.innerHTML = ''
+
+  const saveLink = document.getElementById('save-link')
+  if (saveLink) saveLink.remove()
 }
 
 const createSaveBtn = (saveUrl) => {
-  const link = document.createElement('a');
-  link.id = 'save-link';
+  const link = document.createElement('a')
+  link.id = 'save-link'
   link.classList =
-    'bg-indigo-600 hover:bg-indigo-900 text-white font-bold py-2 rounded w-1/3 m-auto my-5'
-  link.href = saveUrl;
-  link.download = 'qrcode';
-  link.innerHTML = 'Save Image';
-  document.getElementById('generated').appendChild(link);
+    'bg-indigo-500 hover:bg-indigo-900 text-white font-bold py-2 rounded w-1/3 m-auto my-5'
+  link.href = saveUrl
+  link.download = 'qrcode'
+  link.innerHTML = 'Save Image'
+  document.getElementById('generated').appendChild(link)
 }
 
 hideSpinner()
