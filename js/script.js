@@ -12,7 +12,7 @@ const onGenerateSubmit = (e) => {
   if (url === '') {
     Toastify({
       text: 'Please enter a URL',
-      duration: 1500,
+      duration: 1000,
       newWindow: true,
       close: true,
       gravity: 'bottom',
