@@ -66,7 +66,7 @@ const createSaveBtn = (saveUrl) => {
   const link = document.createElement('a')
   link.id = 'save-link'
   link.classList =
-    'bg-indigo-500 hover:bg-indigo-900 text-white font-bold py-2 rounded w-1/3 m-auto my-5'
+    'bg-indigo-500 hover:bg-indigo-900 text-white font-bold py-2 rounded w-1/2 md:w-1/3 m-auto my-5 md:my-7'
   link.href = saveUrl
   link.download = 'qrcode'
   link.innerHTML = 'Save Image'
